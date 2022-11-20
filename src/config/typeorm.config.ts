@@ -2,6 +2,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import {
   TypeOrmModuleAsyncOptions
 } from '@nestjs/typeorm';
+import { Comunidade } from './entities/Comunidade';
 
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
@@ -15,7 +16,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       password: configService.get('DATABASE_PASSWORD'),
       database: configService.get('DATABASE_NAME'),
       entities: [
-        
+        Comunidade
       ],
       migrations: [
         './src/config/migrations/*.js'

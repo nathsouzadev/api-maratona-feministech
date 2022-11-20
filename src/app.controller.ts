@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
 import { AppService } from './app.service';
+import { CriarComunidade } from './dto/criarComunidade.dto';
 
-@Controller()
+@Controller('comunidade')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  listarComunidades() {
+    return this.appService.listarComunidades()
+  }
+
+  @Post()
+  criarComunidade(@Body(new ValidationPipe()) request: CriarComunidade) {
+    return this.appService.criarComunidade(request)
   }
 }

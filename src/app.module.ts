@@ -4,10 +4,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { Comunidade } from './config/entities/Comunidade';
 import { typeOrmAsyncConfig } from './config/typeorm.config';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([ Comunidade ]),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     ConfigModule.forRoot({
       validationSchema: Joi.object({
